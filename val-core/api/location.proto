@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+package location;
+option go_package = "ev-gitlab.mataelang.net/ev-connect/create-ias/core.git/api;api";
+
+message LocationRequest {
+    string vin = 1;
+    double lat = 2;
+    double lon = 3;
+    int64 timestamp = 4;
+}

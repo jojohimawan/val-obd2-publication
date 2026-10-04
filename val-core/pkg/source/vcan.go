@@ -1,0 +1,34 @@
+package source
+
+import (
+	"context"
+	"fmt"
+	"net"
+
+	"ev-gitlab.mataelang.net/ev-connect/create-ias/can.git/pkg/socketcan"
+)
+
+type VcanConnection struct {
+	conn net.Conn
+	Recv *socketcan.Receiver
+}
+
+func Connect(ctx context.Context, network, address string) (*VcanConnection, error) {
+	connection, err := socketcan.DialContext(ctx, network, address)
+	if err != nil {
+		return nil, fmt.Errorf("failed to connect to vcan - %w", err)
+	}
+
+	return &VcanConnection{
+		conn: connection,
+		Recv: socketcan.NewReceiver(connection),
+	}, nil
+}
+
+func (vc *VcanConnection) Close() error {
+	if vc.conn == nil {
+		return nil
+	}
+
+	return vc.conn.Close()
+}

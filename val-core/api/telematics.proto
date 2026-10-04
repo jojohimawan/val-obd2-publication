@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+package telematics;
+
+import "google/protobuf/timestamp.proto";
+
+option go_package = "ev-gitlab.mataelang.net/ev-connect/create-ias/core.git/api;api";
+
+message TelematicsBatch {
+  string vin = 1;
+  google.protobuf.Timestamp capture_time = 2;
+  repeated Telematics signals = 3;
+}
+
+message Telematics {
+  string source = 1;
+  string param = 2;
+
+  oneof value {
+    double double_val = 3;
+    int64 int_val = 4;
+    bool bool_val = 5;
+    string string_val = 6;
+  }
+
+  string unit = 7;
+}

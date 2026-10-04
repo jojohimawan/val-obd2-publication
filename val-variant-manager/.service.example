@@ -1,0 +1,70 @@
+[Unit]
+Description=Intelligent Agent System (IAS) - General CAN
+After=network-online.target sys-subsystem-net-devices-vcan0.device
+Wants=network-online.target
+Requires=sys-subsystem-net-devices-vcan0.device
+StartLimitIntervalSec=300
+StartLimitBurst=3
+
+[Service]
+Type=simple
+User=ias
+Group=ias
+ProtectSystem=strict
+ProtectHome=yes
+NoNewPrivileges=true
+
+WorkingDirectory=/opt/ias
+ExecStart=/opt/ias/bin/intelligent-agent-system
+Restart=on-failure
+RestartSec=10
+
+MemoryMax=1G
+MemoryLow=256M
+CPUQuota=80%
+TasksMax=256
+LimitNOFILE=65536
+LimitNPROC=4096
+
+# --- Capabilities ---
+CapabilityBoundingSet=CAP_NET_RAW
+AmbientCapabilities=CAP_NET_RAW
+
+PrivateTmp=true
+ProtectClock=true
+ProtectHostname=true
+ProtectKernelLogs=true
+ProtectKernelModules=true
+ProtectKernelTunables=true
+ProtectControlGroups=true
+
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6 AF_CAN
+
+RestrictNamespaces=true
+RestrictRealtime=true
+RestrictSUIDSGID=true
+LockPersonality=true
+
+SystemCallFilter=~@clock @debug @module @mount @obsolete @raw-io @reboot @swap
+UMask=0027
+
+DevicePolicy=closed
+DeviceAllow=/dev/null rw
+DeviceAllow=/dev/zero rw
+DeviceAllow=/dev/urandom r
+DeviceAllow=char-socketcan rw
+
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=ias-general-staging
+SyslogFacility=daemon
+
+KillMode=process
+KillSignal=SIGTERM
+TimeoutStopSec=30
+
+EnvironmentFile=-/etc/ias/ias-general.env
+Environment="APP_ENV=staging"
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,65 @@
+[
+  {
+    "protocol": "OBD2",
+    "signal_name": "S01PID0C_EngineRPM",
+    "vss": {
+      "path": "Vehicle.Powertrain.CombustionEngine.Speed",
+      "unit": "RPM",
+      "type": "float"
+    }
+  },
+  {
+    "protocol": "OBD2",
+    "signal_name": "S01PID0D_VehicleSpeed",
+    "vss": {
+      "path": "Vehicle.Speed",
+      "unit": "km/h",
+      "type": "int32"
+    }
+  },
+  {
+    "protocol": "OBD2",
+    "signal_name": "S01PID05_EngineCoolantTemp",
+    "vss": {
+      "path": "Vehicle.Powertrain.CombustionEngine.ECT",
+      "unit": "celsius",
+      "type": "int32"
+    }
+  },
+  {
+    "protocol": "OBD2",
+    "signal_name": "S01PID0F_IntakeAirTemperature",
+    "vss": {
+      "path": "Vehicle.Powertrain.CombustionEngine.Aspiration.Intake.Temperature",
+      "unit": "celsius",
+      "type": "int32"
+    }
+  },
+  {
+    "protocol": "OBD2",
+    "signal_name": "S01PID04_CalcEngineLoad",
+    "vss": {
+      "path": "Vehicle.Powertrain.CombustionEngine.Load",
+      "unit": "Percent",
+      "type": "float"
+    }
+  },
+  {
+    "protocol": "OBD2",
+    "signal_name": "S01PID11_ThrottlePosition",
+    "vss": {
+      "path": "Vehicle.Powertrain.CombustionEngine.Aspiration.Throttle.Position",
+      "unit": "Percent",
+      "type": "float"
+    }
+  },
+  {
+    "protocol": "OBD2",
+    "signal_name": "S01PID10_MAFAirFlowRate",
+    "vss": {
+      "path": "Vehicle.Powertrain.CombustionEngine.Aspiration.Intake.Flow",
+      "unit": "g/s",
+      "type": "float"
+    }
+  }
+]
