@@ -65,6 +65,6 @@ If you use this material, please cite the manuscript.
 This research was funded by the Ministry of Higher Education, Science, and Technology of the Republic of Indonesia (Kemendiktisaintek) through the Hiliriset Program under the Hilirisasi Inovasi Komersial scheme, Contract No. 1077/PL14/PT/IX/2025 and Contract No. 1467/DST/PL14/PT/IV/2026.
 
 ## 5. Contact 
-
-
+- Ferry Astika Saputra (First Author): ferryas@pens.ac.id
+- Jordan Frisay Himawan (Co-Author): himawanjordan@gmail.com
 
